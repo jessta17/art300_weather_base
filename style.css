@@ -1,4 +1,4 @@
-.degree_symbol {
+/* .degree_symbol {
     display: none;
 }
 
@@ -9,4 +9,53 @@
 #map {
 	width: 600px;
     height: 600px;
+} */
+body{
+    background-color: rgb(9, 46, 63);
+    font-family: 'Helvetica Neue', serif;
+}
+.search{
+    color: rgb(234, 232, 232);
+
+}
+.today{
+    color: rgb(234, 232, 232);
+    font-weight: lighter;
+    background-color:  rgb(108, 124, 129);
+    position: relative;
+    padding: 1em;
+    width: 27em;
+    height: 70%;
+    left: 8em;
+
+}
+.head{
+    color: rgb(234, 232, 232);
+    font-weight: lighter;
+    font-size: 2.7em;
+    padding: 1em;
+    margin-bottom: -1.7em;
+    margin-top: -2em;
+    left: -5em;
+}
+.basics{
+    color: rgb(234, 232, 232);
+    font-weight: 200;
+    background-color: rgb(137, 159, 168);
+    width: 25em;
+    padding: 1em;
+    font-size: 1em;
+}
+.temp{
+    color: rgb(234, 232, 232);
+    font-weight: normal;
+    font-size: 5em;
+    margin-bottom: -.8em;
+    margin-top: -.8em;
+}
+#date{
+    margin-top: -1em;
+    margin-bottom: -.5em;
+
+
 }

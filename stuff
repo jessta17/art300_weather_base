@@ -1,0 +1,69 @@
+ <!-- <h1>TIME</h1>
+            <p>{{time.day}}</p>
+            <p>{{time.date}}</p>
+            <p>{{time.hour_12}} : {{time.minute}} : {{time.seconds}} {{time.ampm}}</p>
+            <p>{{time.moom}}</p>
+
+            <h1>META</h1>
+            <p>{{city}}</p>
+
+            <p>{{location.zip}}</p>
+            <p>{{location.coord.lat}}</p>
+            <p>{{location.coord.lon}}</p>
+            <p>{{location.name}}</p>
+
+            <p>{{error}}</p>
+
+
+            <h1>CURRENT</h1>
+            <p>{{current.description_main}}</p>
+            <p>{{current.description_long}}</p>
+            <p>{{current.description_icon}}</p>
+
+            <p class="degree_symbol">{{current.temp.current}}</p>
+            <p class="degree_symbol">{{current.temp.high}}</p>
+            <p class="degree_symbol">{{current.temp.low}}</p>
+
+            <p>{{current.wind.speed}}</p>
+            <p class="degree_symbol">{{current.wind.degree}}</p>
+            <p>{{current.cloud_cover}}</p>
+
+            <p>{{current.rain}}</p>
+            <p>{{current.snow}}</p>
+
+            <p>{{current.sunrise}}</p>
+            <p>{{current.sunset}}</p>
+
+
+            <h1>HOURLY</h1>
+            <h4>Hour 1</h4>
+            <p>{{hourly[0].isDaytime ? 'Day' : 'Night' }}</p>
+            <p>{{hourly[0].number}}</p>
+            <p>{{hourly[0].shortForecast}}</p>
+            <p>{{hourly[0].startTime}}</p>
+            <p class="degree_symbol">{{hourly[0].temperature}}</p>
+            <p>{{hourly[0].emperatureTrend}}</p>
+            <p>{{hourly[0].windSpeed}}</p>
+            <p>{{hourly[0].windDirection}}</p>
+
+            <h1>FORECAST</h1>
+            <h4>Day 1</h4>
+            <p  class="degree_symbol">High - {{forecast[0].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[0].min_temp}}</p>
+            <p>{{forecast[0].uv}}</p>
+            <p>{{forecast[0].weather.description}}</p>
+
+            <p>{{forecast[0].wind_spd}} mph</p>
+            <p>{{forecast[0].wind_cdir_full}}</p>
+            <p>{{forecast[0].wind_cdir}}</p>
+
+            <p>{{forecast[0].vis}}</p>
+
+            <p>{{forecast[0].pop}}</p>
+
+            <p>{{forecast[0].precip}}</p>
+
+            <p>{{forecast[0].snow}}</p>
+
+            <p>{{forecast[0].dewpt}}</p>
+            <p>{{forecast[0].pres}} mb</p> -->
