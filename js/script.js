@@ -28,7 +28,7 @@ var weather = {
 	
 
 	time:{
-		day:"",
+		day:"time.date"
 		date:"",
 		hour_24:"",
 		hour_12: "",
