@@ -1,4 +1,4 @@
-/* .degree_symbol {
+.degree_symbol {
     display: none;
 }
 
@@ -9,10 +9,85 @@
 #map {
 	width: 600px;
     height: 600px;
-} */
+} 
+
+body{
+    
+
+}
+
+
+.main{
+    display: grid;
+    grid-template-columns: .3fr .7fr;
+    grid-column-gap: 200px;
+    grid-template-rows: .01fr .9fr;
+    grid-row-gap: 50px;
+    margin: 5%;
+}
+
+/* top bars */
+
+
+.alerts {
+    display: flex;
+    background-color: rgb(108, 124, 129);
+    width: 50em;
+  }
+  #who {
+      margin: auto;
+      color: rgb(234, 232, 232);
+      font-size: 1.5em;
+    
+
+  
+  }
+  #what {
+    margin: auto;
+    background-color: rgb(234, 232, 232);
+    color: red;
+    width: 75%;
+    height: 70%;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 1.5em;
+    
+
+   
+
+
+  }
+
+
+.search{
+    display: flex;
+    background-color: rgb(108, 124, 129);
+    width: 28em;
+    padding: .5em;
+    align-content: center;
+  }
+  #area {
+      margin: auto;
+      font-weight: normal;
+      font-size: 1.2em;
+    
+
+  }
+  #zip {
+    flex: .96;
+    
+
+  }
+/* end of top bars */
+
+
+
+
+
+/* todays weather */
 body{
     background-color: rgb(9, 46, 63);
-    font-family: 'Helvetica Neue', serif;
+    font-family: 'Helvetica Neue',sans-serif;
 }
 .search{
     color: rgb(234, 232, 232);
@@ -25,26 +100,33 @@ body{
     position: relative;
     padding: 1em;
     width: 27em;
-    height: 70%;
-    left: 8em;
+    height: 49em;
+    
+    
 
 }
 .head{
     color: rgb(234, 232, 232);
     font-weight: lighter;
     font-size: 2.7em;
-    padding: 1em;
-    margin-bottom: -1.7em;
-    margin-top: -2em;
-    left: -5em;
+    padding-top: -5em;
+    padding-bottom: -1em;
+    margin-top: -1em;
+    margin-bottom: -.8em;
+    
+    
 }
 .basics{
     color: rgb(234, 232, 232);
     font-weight: 200;
     background-color: rgb(137, 159, 168);
     width: 25em;
+    height: 18em;
     padding: 1em;
     font-size: 1em;
+    font-weight: 340;
+    letter-spacing: .8px;
+    
 }
 .temp{
     color: rgb(234, 232, 232);
@@ -56,6 +138,126 @@ body{
 #date{
     margin-top: -1em;
     margin-bottom: -.5em;
+    font-size: 1.5em;
+    line-height: .5em;
+}
+.other_info{
+    background-color: rgb(234, 232, 232);
+    color: rgb(9, 46, 63);
+    height: 23em;
+    padding: 1em;
+    padding-top: .001em;
+    margin-top: 1em;
+    line-height: 1.5em;
+    font-weight: bolder;
+    
+}
+/* end of todays weather */
 
+
+
+/* radar */
+.radar{
+    background-color:  rgb(108, 124, 129);
+    height: 47em;
+    width: 49em;
+    padding-left: 1em;
+    
+}
+ #radar_title{
+    color: rgb(234, 232, 232);
+    font-weight: lighter;
+    position: relative;
+    font-weight: lighter;
+    font-size: 2.7em;
+    margin-top: -.64em;
+    margin-bottom: -.8em;
+ }
+ #location{
+    background-color: rgb(234, 232, 232);
+    color: rgb(9, 46, 63);
+    height: 4em;
+    width: 98%;
+    padding-top: .0008em;
+    padding-left: .1em;
+    font-weight: 400;
+    font-family: 'Helvetica Neue',sans-serif;
+    font-size: 1.2em;
+    margin-top: -.6em;
+
+ }
+/* end radar */
+
+
+
+/* forecast */
+.forecast{
+    background-color: rgb(228, 236, 240);
+    margin-left: 5%;
+    margin-right: 4%;
+    margin-top: 3em;
+    height: 1.3em;
+    width: 78%;
+    font-weight: lighter;
+    font-size: 2.7em;
+    padding-left: .4em;
+    
+}
+.days{
+    display: grid;
+    grid-template-columns: .16fr .16fr .16fr .16fr .16fr;
+    margin-left: 5%;
+    margin-top: 1%;
+    background-color: rgb(108, 124, 129);
+    grid-column-gap: 1em;
+}
+
+
+
+.date{
+    
+    font-weight: lighter;
+   
+    position: relative;
+    padding: 1em;
+    width: 1em;
+    height: 1em;
+    background-color: rgb(234, 232, 232);
+    
+    
 
 }
+    
+
+.specific{
+    color: rgb(234, 232, 232);
+    font-weight: 200;
+    background-color: rgb(137, 159, 168);
+    width: 25em;
+    height: 18em;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: 340;
+    letter-spacing: .8px;
+    
+}
+.hl{
+    color: rgb(234, 232, 232);
+    font-weight: normal;
+    font-size: 5em;
+    margin-bottom: -.8em;
+    margin-top: -.8em;
+}
+.more{
+    background-color: rgb(234, 232, 232);
+    color: rgb(9, 46, 63);
+    height: 10em;
+    padding: 1em;
+    padding-top: .001em;
+    margin-top: 1em;
+    line-height: 1.5em;
+    font-weight: normal;
+    
+}
+
+/* end of forecast */
