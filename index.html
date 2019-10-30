@@ -11,6 +11,12 @@
         <link rel="stylesheet" href="/js/libraries/leaflet/leaflet-openweathermap.css" />
         <link rel="stylesheet" href="/js/libraries/leaflet/leaflet-languageselector.css" />
 
+
+        <script src="/js/libraries/vue.min.js"></script>
+        <script src="keys.js"></script>
+        <script src="/js/moon.js"></script>
+
+
         <script src="/js/libraries/leaflet/leaflet.js"></script>
         <script src="/js/libraries/leaflet/Permalink.js"></script>
         <script src="/js/libraries/leaflet/Permalink.Layer.js"></script>
@@ -23,6 +29,7 @@
     </head>
 
     <body>
+    <div class="results" id="app">
         <div class="main">
             <div class="search">
                 <div id="area">Area Search</div>
@@ -31,44 +38,47 @@
             </div>
             <div class="alerts">
                 <div id="who">Weather Alerts:</div>
-                <div id="what">Severe Thunderstorm Warning</div>
+                <div id="what">{{current.description_long}}</div>
             </div>
             <div class="today">
                 <div class="head">
-                    <p>Today's Weather</p>
+                    <p>{{location.name}}</p>
                 </div>
                 <div class="basics">
                     <div id="date">
-                        <p v-bind:class="time.day">11:59 a.m.</p>
-                        <p v-bind:class="time.date">Tuesday October 15, 2019</p>
+                        <p >{{time.hour_12}} : {{time.minute}} : {{time.seconds}} {{time.ampm}}</p>
+                        <p >{{time.date}}</p>
                     </div>
                     <div class="temp">
-                        <p>75 F</p>
+                        <p>{{current.temp.current}}</p>
+                        <div class="icon">
+                            <img v-bind:src="'/weather_icons/'+forecast[0].description_icon+'.png'" v-bind:alt="forecast[0].weather.description">
+                        </div>
+                        <div v-bind:class="'icon-'+forecast[0].description_icon"></div>
                     </div>
-                    <p>Feels like 79 F</p>
-                    <p>High:76 F/ Low:40 F</p>
-                    <p>Partially Cloudy</p>
-                    <p>Precipitation: 0%</p>
+                    <p>High: {{current.temp.high}}/ Low: {{current.temp.low}}</p>
+                    <p>Cloud Coverage: {{current.cloud_cover}}</p>
+                    <p>Precipitation: Rain- {{current.rain}}/ Snow- {{current.snow}}</p>
                 </div>
                 <div class="other_info">
-                    <p>Wind: 20mph from the north</p>
-                    <p>Pressure: 43</p>
-                    <p>Air Quality: Bad</p>
-                    <p>Visibility: Mediocre</p>
-                    <p>Dew Point: 4</p>
-                    <p>Humidity: 6</p>
-                    <p>Heat Index: 23</p>
-                    <p>Sunrise: 5, Sunset: 7</p>
-                    <p>Moon: Crescent</p>
+                    <p>Wind: {{current.wind.speed}} {{hourly[0].windDirection}}/ Temp: {{current.wind.degree}}</p>
+                    <p>{{current.description_main}}</p>
+                    <p>{{current.description_long}}</p>
+                    <p>Pressure: {{forecast[0].pres}}</p>
+                    <p>Dew Point: {{forecast[0].dewpt}}</p>
+                    <p>Visibility: {{forecast[0].vis}} </p>
+                    <p>UV Index: {{forecast[0].uv}}</p>
+                    <p>Sunrise: {{current.sunrise}}/ Sunset: {{current.sunset}}</p>
+                    <p>{{time.moon}}</p>
                 </div>
             </div>
             <div class="radar">
                 <div id="radar_title">
                     <p>Radar</p>
                 </div>
-                <p><img src="https://radar.weather.gov/ridge/Conus/RadarImg/uppermissvly.gif" alt=""></p>
+                <div id="map"></div>
                 <div id="location">
-                    <p>Midwest</p>
+                    <p>{{city}}, {{location.zip}}, Lat: {{location.coord.lat}}, Long: {{location.coord.lon}}</p>
                 </div>
             </div>
         </div>
@@ -78,82 +88,92 @@
         <div class="five_day">
             <div class="days">
                 <div class="1">
-                    <p class="date">Wed. October 16</p>
+                    <p class="date">Day 1</p>
                     <div class="hl">
-                        <p>High-76F / Low-40F</p>
+                        <p>High- {{forecast[1].max_temp}}/</p>
+                        <p>Low- {{forecast[1].min_temp}}</p>
                     </div>
                     <div class="specific">
-                        <p>0% chance for precipitation</p>
-                        <p>Partially cloudy</p>
+                        <p>Precipitation: Rain-{{forecast[1].precip}}/ Snow-{{forecast[1].snow}}</p>
+                        <p>{{forecast[1].weather.description}}</p>
                         <div class="more">
-                            <p>Air quality: Bad</p>
-                            <p>Humidity: 6</p>
-                            <p>UV index: 4</p>
-                            <p>Sunrise: 5, Sunset: 7</p>
+                            <p>Wind: {{forecast[1].wind_spd}} ,{{forecast[1].wind_cdir_full}}, {{forecast[1].wind_cdir}}</p>
+                            <p>Visibility: {{forecast[1].vis}}</p>
+                            <p>UV index: {{forecast[1].uv}}</p>
+                            <p>Dew Point: {{forecast[1].dewpt}}</p>
+                            <p>Pressure: {{forecast[1].pres}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="2">
-                    <p class="date">Thurs. October 17</p>
+                    <p class="date">Day 2</p>
                     <div class="hl">
-                        <p>High-76F / Low-40F</p>
+                            <p>High- {{forecast[2].max_temp}}/</p>
+                            <p>Low- {{forecast[2].min_temp}}</p>
                     </div>
                     <div class="specific">
-                        <p>0% chance for precipitation</p>
-                        <p>Partially cloudy</p>
+                            <p>Precipitation: Rain-{{forecast[2].precip}}/ Snow-{{forecast[2].snow}}</p>
+                            <p>{{forecast[2].weather.description}}</p>
                         <div class="more">
-                            <p>Air quality: Bad</p>
-                            <p>Humidity: 6</p>
-                            <p>UV index: 4</p>
-                            <p>Sunrise: 5, Sunset: 7</p>
+                                <p>Wind: {{forecast[2].wind_spd}} ,{{forecast[2].wind_cdir_full}}, {{forecast[2].wind_cdir}}</p>
+                                <p>Visibility: {{forecast[2].vis}}</p>
+                                <p>UV index: {{forecast[2].uv}}</p>
+                                <p>Dew Point: {{forecast[2].dewpt}}</p>
+                                <p>Pressure: {{forecast[2].pres}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="3">
-                    <p class="date">Fri. October 18</p>
+                    <p class="date">Day 3</p>
                     <div class="hl">
-                        <p>High-76F / Low-40F</p>
-                    </div>
-                    <div class="specific">
-                        <p>0% chance for precipitation</p>
-                        <p>Partially cloudy</p>
-                        <div class="more">
-                            <p>Air quality: Bad</p>
-                            <p>Humidity: 6</p>
-                            <p>UV index: 4</p>
-                            <p>Sunrise: 5, Sunset: 7</p>
+                            <p>High- {{forecast[3].max_temp}}/</p>
+                            <p>Low- {{forecast[3].min_temp}}</p>
+                        </div>
+                        <div class="specific">
+                                <p>Precipitation: Rain-{{forecast[3].precip}}/ Snow-{{forecast[3].snow}}</p>
+                                <p>{{forecast[3].weather.description}}</p>
+                            <div class="more">
+                                    <p>Wind: {{forecast[3].wind_spd}} ,{{forecast[3].wind_cdir_full}}, {{forecast[3].wind_cdir}}</p>
+                                    <p>Visibility: {{forecast[3].vis}}</p>
+                                    <p>UV index: {{forecast[3].uv}}</p>
+                                    <p>Dew Point: {{forecast[3].dewpt}}</p>
+                                    <p>Pressure: {{forecast[3].pres}}</p>
                         </div>
                     </div> 
                     </div>
                 <div class="4">
-                    <p class="date">Sat. October 19</p>
+                    <p class="date">Day 4</p>
                     <div class="hl">
-                        <p>High-76F / Low-40F</p>
-                    </div>
-                    <div class="specific">
-                        <p>0% chance for precipitation</p>
-                        <p>Partially cloudy</p>
-                        <div class="more">
-                            <p>Air quality: Bad</p>
-                            <p>Humidity: 6</p>
-                            <p>UV index: 4</p>
-                            <p>Sunrise: 5, Sunset: 7</p>
+                            <p>High- {{forecast[4].max_temp}}/</p>
+                            <p>Low- {{forecast[4].min_temp}}</p>
+                        </div>
+                        <div class="specific">
+                                <p>Precipitation: Rain-{{forecast[4].precip}}/ Snow-{{forecast[4].snow}}</p>
+                                <p>{{forecast[4].weather.description}}</p>
+                            <div class="more">
+                                    <p>Wind: {{forecast[4].wind_spd}} ,{{forecast[4].wind_cdir_full}}, {{forecast[4].wind_cdir}}</p>
+                                    <p>Visibility: {{forecast[4].vis}}</p>
+                                    <p>UV index: {{forecast[4].uv}}</p>
+                                    <p>Dew Point: {{forecast[4].dewpt}}</p>
+                                    <p>Pressure: {{forecast[4].pres}}</p>
                         </div>
                     </div>  
                 </div>
                 <div class="5">
-                    <p class="date">Sat. October 20</p>
+                    <p class="date">Day 5</p>
                     <div class="hl">
-                        <p>High-76F / Low-40F</p>
-                    </div>
-                    <div class="specific">
-                        <p>0% chance for precipitation</p>
-                        <p>Partially cloudy</p>
-                        <div class="more">
-                            <p>Air quality: Bad</p>
-                            <p>Humidity: 6</p>
-                            <p>UV index: 4</p>
-                            <p>Sunrise: 5, Sunset: 7</p>
+                            <p>High- {{forecast[5].max_temp}}/</p>
+                            <p>Low- {{forecast[5].min_temp}}</p>
+                        </div>
+                        <div class="specific">
+                                <p>Precipitation: Rain-{{forecast[5].precip}}/ Snow-{{forecast[5].snow}}</p>
+                                <p>{{forecast[5].weather.description}}</p>
+                            <div class="more">
+                                    <p>Wind: {{forecast[5].wind_spd}} ,{{forecast[5].wind_cdir_full}}, {{forecast[5].wind_cdir}}</p>
+                                    <p>Visibility: {{forecast[5].vis}}</p>
+                                    <p>UV index: {{forecast[5].uv}}</p>
+                                    <p>Dew Point: {{forecast[5].dewpt}}</p>
+                                    <p>Pressure: {{forecast[5].pres}}</p>
                         </div>
                     </div>
                 </div>
@@ -166,7 +186,7 @@
 
 
 
-        <div class="results" id="app">
+        
 
 
 
@@ -242,8 +262,16 @@
             <p>{{forecast[0].pres}} mb</p>
         </div>
         <div id="map"></div> -->
+        <div class="icon-01d"></div>
+        <div class="icon-02d"></div>
+        <div class="icon-03d"></div>
+        <div class="icon-10d"></div>
+        <div class="icon-11d"></div>
+        <div class="icon-13d"></div>
+        <!-- <div>
+            <img src="/icons/02d.png" alt="">
+        </div> -->
 
-
-        <script src="script.js" type="module"></script>
+        <script src="/js/script.js"></script>
     </body>
 </html>
