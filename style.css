@@ -227,7 +227,7 @@ body{
 
 .date{
     
-    font-weight: lighter;
+    font-weight: normal;
     margin-left: .5em;
     position: relative;
     padding: 1em;
@@ -235,6 +235,7 @@ body{
     height: 1em;
     background-color: rgb(234, 232, 232);
     text-align: left;
+    
 
     
     

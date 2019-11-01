@@ -69,7 +69,7 @@
                     <p>Visibility: {{forecast[0].vis}} </p>
                     <p>UV Index: {{forecast[0].uv}}</p>
                     <p>Sunrise: {{current.sunrise}}/ Sunset: {{current.sunset}}</p>
-                    <p>{{time.moon}}</p>
+                    <p>{{time.moom}}</p>
                 </div>
             </div>
             <div class="radar">
@@ -88,7 +88,7 @@
         <div class="five_day">
             <div class="days">
                 <div class="1">
-                    <p class="date">Day 1</p>
+                    <p class="date">{{forecast[1].weekday}}</p>
                     <div class="hl">
                         <p>High- {{forecast[1].max_temp}}/</p>
                         <p>Low- {{forecast[1].min_temp}}</p>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="2">
-                    <p class="date">Day 2</p>
+                    <p class="date">{{forecast[2].weekday}}</p>
                     <div class="hl">
                             <p>High- {{forecast[2].max_temp}}/</p>
                             <p>Low- {{forecast[2].min_temp}}</p>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="3">
-                    <p class="date">Day 3</p>
+                    <p class="date">{{forecast[3].weekday}}</p>
                     <div class="hl">
                             <p>High- {{forecast[3].max_temp}}/</p>
                             <p>Low- {{forecast[3].min_temp}}</p>
@@ -142,7 +142,7 @@
                     </div> 
                     </div>
                 <div class="4">
-                    <p class="date">Day 4</p>
+                    <p class="date">{{forecast[4].weekday}}</p>
                     <div class="hl">
                             <p>High- {{forecast[4].max_temp}}/</p>
                             <p>Low- {{forecast[4].min_temp}}</p>
@@ -160,7 +160,7 @@
                     </div>  
                 </div>
                 <div class="5">
-                    <p class="date">Day 5</p>
+                    <p class="date">{{forecast[5].weekday}}</p>
                     <div class="hl">
                             <p>High- {{forecast[5].max_temp}}/</p>
                             <p>Low- {{forecast[5].min_temp}}</p>
@@ -265,13 +265,17 @@
         <div class="icon-01d"></div>
         <div class="icon-02d"></div>
         <div class="icon-03d"></div>
+        <div class="icon-04d"></div>
+        <div class="icon-09d"></div>
         <div class="icon-10d"></div>
         <div class="icon-11d"></div>
         <div class="icon-13d"></div>
+        <div class="icon-50d"></div>
         <!-- <div>
             <img src="/icons/02d.png" alt="">
         </div> -->
 
         <script src="/js/script.js"></script>
+        <script src="/js/moon.js"></script>
     </body>
 </html>
